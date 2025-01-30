@@ -3,9 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
+.grid-container {
+  display: grid;
   grid-template-areas:
-    "nav"
+    "navbar"
     "main"
     "section"
     "footer";
@@ -22,7 +23,7 @@ body {
   height: 100%;
 }
 .navbar {
-  grid-area: nav;
+  grid-area: navbar;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,6 +42,7 @@ ul {
   animation: move 2s 1;
 }
 ul li {
+  width: 8em;
   padding: 15px;
   list-style: none;
   transition: box-shadow 400ms ease-in-out;
@@ -50,7 +52,7 @@ li:hover {
 }
 li a {
   text-decoration: none;
-  color:rgba(0, 0, 0, 0.9)
+  color: rgba(0, 0, 0, 0.9);
 }
 @keyframes move {
   from {
@@ -61,7 +63,6 @@ li a {
   }
 }
 /*modificaciones del main*/
-
 .main {
   grid-area: main;
   display: grid;
@@ -78,6 +79,7 @@ li a {
 .cart {
   position: relative;
   opacity: 1;
+  border-radius: 10px;
 }
 .button-transition {
   width: 25px;
@@ -111,6 +113,7 @@ li a {
 .cart img {
   width: 100%;
   height: 100%;
+  border-radius: 10px;
 }
 .cart1 {
   grid-area: cart1;
@@ -139,12 +142,12 @@ li a {
 .cart9 {
   grid-area: cart9;
 }
- i {
+i {
   width: 20px;
   min-height: auto;
   color: rgba(18, 21, 29, 0.71);
-} 
-section {
+}
+.section {
   grid-area: section;
   display: flex;
   flex-direction: column;
@@ -155,35 +158,34 @@ section {
   font-size: 20px;
   background-color: rgb(191, 121, 121);
 }
-
 .content-publi {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
- animation: movimiento 25s infinite;
+  animation: movimiento 25s infinite;
 }
 .div-publicity {
   width: 8em;
   height: 5em;
-  
 }
 .div-publicity img {
   width: 100%;
   height: 100%;
   border-radius: 25px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
-/* @keyframes movimiento {
+@keyframes movimiento {
   from {
     transform: translateX(-100%)
 }
  to {
     transform: translateX(100%)
 }
-} */
+}
 /*estilos del footer*/
-footer {
+.footer {
+  grid-area: footer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,19 +201,18 @@ footer div {
   font-size: 25px;
 }
 @media (min-width: 576px) {
-  body {
+  .grid-container {
     grid-template-areas:
-    "nav main"
-    "nav main"
-    "section"
-    "footer";
+      "navbar main"
+      "navbar main"
+      "section section"
+      "footer footer";
+     grid-template-columns: 1fr 80%; 
   }
   ul {
-    background-color: rgba(0, 0, 0, 0.09);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: colum;
-    justify-content: center;
+    flex-direction: column;
   }
-};
-  
+  .navbar {
+    justify-content: start;
+  }
+}
